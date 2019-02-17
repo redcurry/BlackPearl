@@ -157,7 +157,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HoughCircleTest.cpp" />
     <ClCompile Include="TestOpenCv.Coin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HoughCircleTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
