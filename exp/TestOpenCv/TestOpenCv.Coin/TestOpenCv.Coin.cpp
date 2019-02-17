@@ -59,12 +59,12 @@ void detect_and_draw_circles()
 
 	canny_circles = canny.clone();
 
-	for (int i = 0; i < circles.size(); i++)
+	for (auto& circle : circles)
 	{
 		cv::circle(
 			canny_circles,
-			cv::Point(cvRound(circles[i][0]), cvRound(circles[i][1])),
-			cvRound(circles[i][2]),
+			cv::Point(cvRound(circle[0]), cvRound(circle[1])),
+			cvRound(circle[2]),
 			cv::Scalar(128, 128, 128),
 			1,
 			cv::LINE_AA
