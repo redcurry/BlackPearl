@@ -12,6 +12,11 @@ namespace BlackPearl.Xamarin
         public MainPage()
         {
             InitializeComponent();
+
+            Content = new Button
+            {
+                Text = DependencyService.Get<IImageAnalysis>().GetMean().ToString("f2")
+            };
         }
     }
 }
