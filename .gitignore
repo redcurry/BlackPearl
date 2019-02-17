@@ -3,6 +3,7 @@
 *.suo
 *.user
 *.userprefs
+xcuserdata/
 
 # Build results
 
@@ -16,3 +17,7 @@
 # NuGet
 
 [Pp]ackages/
+
+# Mac-specific
+
+.DS_Store
