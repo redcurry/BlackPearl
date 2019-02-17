@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin.Android", "BlackPearl.Xamarin\BlackPearl.Xamarin.Android\BlackPearl.Xamarin.Android.csproj", "{EC018815-1A5C-41FF-8FDE-A34A11AA4BB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin.Android", "BlackPearl.Xamarin.Android\BlackPearl.Xamarin.Android.csproj", "{EC018815-1A5C-41FF-8FDE-A34A11AA4BB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin.iOS", "BlackPearl.Xamarin\BlackPearl.Xamarin.iOS\BlackPearl.Xamarin.iOS.csproj", "{0ECCFB0E-0EFA-4CE0-AE73-E9A530F77E22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin.iOS", "BlackPearl.Xamarin.iOS\BlackPearl.Xamarin.iOS.csproj", "{0ECCFB0E-0EFA-4CE0-AE73-E9A530F77E22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin", "BlackPearl.Xamarin\BlackPearl.Xamarin\BlackPearl.Xamarin.csproj", "{3AF59E3A-B638-49AA-BCF2-A87846184234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackPearl.Xamarin", "BlackPearl.Xamarin\BlackPearl.Xamarin.csproj", "{3AF59E3A-B638-49AA-BCF2-A87846184234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
