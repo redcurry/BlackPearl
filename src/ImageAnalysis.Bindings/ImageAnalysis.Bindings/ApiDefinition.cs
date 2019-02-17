@@ -9,8 +9,8 @@ namespace ImageAnalysis.Bindings
     [BaseType(typeof(NSObject))]
     interface ImageAnalysis
     {
-        [Export("getMean")]
-        double GetMean();
+        [Export("drawOn:")]
+        UIImage DrawOn(UIImage image);
     }
 }
 
