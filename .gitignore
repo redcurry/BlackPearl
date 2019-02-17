@@ -18,6 +18,10 @@ xcuserdata/
 
 [Pp]ackages/
 
+# Static libraries
+
+*.a
+
 # Third-party libraries
 
 lib/
