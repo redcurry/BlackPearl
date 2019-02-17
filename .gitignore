@@ -18,6 +18,10 @@ xcuserdata/
 
 [Pp]ackages/
 
+# Third-party libraries
+
+lib/
+
 # Mac-specific
 
 .DS_Store
