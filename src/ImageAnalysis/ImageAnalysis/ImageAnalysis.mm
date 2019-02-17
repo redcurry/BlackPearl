@@ -7,16 +7,20 @@
 //
 
 #ifdef __cplusplus
-#include "MeanCalc.hpp"
+#include "ImageDrawer.hpp"
 #endif
 
 #import "ImageAnalysis.h"
+#import "UIImage+OpenCV.h"
 
 @implementation ImageAnalysis
 
-- (double)getMean
+- (UIImage *)drawOn:(UIImage *)image
 {
-    return MeanCalc().GetMean();
+    cv::Mat mat = [image CVMat];
+    ImageDrawer drawer;
+    drawer.DrawOn(mat);
+    return [UIImage imageWithCVMat:mat];
 }
 
 @end

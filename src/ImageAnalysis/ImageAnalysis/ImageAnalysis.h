@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ImageAnalysis : NSObject
 
-- (double)getMean;
+- (UIImage *)drawOn:(UIImage *)image;
 
 @end

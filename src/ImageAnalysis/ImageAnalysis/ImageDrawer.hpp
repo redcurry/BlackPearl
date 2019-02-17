@@ -1,15 +1,20 @@
 //
-//  MeanCalc.cpp
+//  ImageDrawer.hpp
 //  ImageAnalysis
 //
 //  Created by Carlos Anderson on 2/17/19.
 //  Copyright © 2019 Carlos Anderson. All rights reserved.
 //
 
-#include "MeanCalc.hpp"
+#ifndef ImageDrawer_hpp
+#define ImageDrawer_hpp
+
 #include <opencv2/opencv.hpp>
 
-double MeanCalc::GetMean()
+class ImageDrawer
 {
-    return cv::mean(cv::Scalar(10.0, 20.0, 30.0, 40.0))[0];
-}
+public:
+    void DrawOn(cv::Mat& image);
+};
+
+#endif /* ImageDrawer_hpp */
