@@ -1,0 +1,5 @@
+Create environment variable OPENCV_DIR with the path to the binaries;
+e.g., C:\opencv\build\x64\vc15
+
+Add to the PATH environment variable the path to the DLLs; e.g.,
+%OPENCV_DIR%\bin
