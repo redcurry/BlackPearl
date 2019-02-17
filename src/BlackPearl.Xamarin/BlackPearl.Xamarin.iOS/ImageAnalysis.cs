@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -11,9 +12,13 @@ namespace BlackPearl.Xamarin.iOS
 {
     public class ImageAnalysis : IImageAnalysis
     {
-        public double GetMean()
+        public Stream DrawOn(byte[] jpg)
         {
-            return new global::ImageAnalysis.Bindings.ImageAnalysis().GetMean();
+            var ia = new global::ImageAnalysis.Bindings.ImageAnalysis();
+            var imageData = NSData.FromArray(jpg);
+            var image = UIImage.LoadFromData(imageData);
+            var newImage = ia.DrawOn(image);
+            return newImage.AsPNG().AsStream();
         }
     }
 }
