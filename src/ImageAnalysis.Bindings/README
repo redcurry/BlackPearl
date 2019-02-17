@@ -1,0 +1,2 @@
+Copy iOS bindings library and opencv2.a to project directory before opening the
+solution. They were not included in the repository because they are large.
