@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		079FB91E221917D200BB8B12 /* ImageAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 079FB91D221917D200BB8B12 /* ImageAnalysis.m */; };
+		079FB91E221917D200BB8B12 /* ImageAnalysis.mm in Sources */ = {isa = PBXBuildFile; fileRef = 079FB91D221917D200BB8B12 /* ImageAnalysis.mm */; };
 		079FB91F221917D200BB8B12 /* ImageAnalysis.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 079FB91C221917D200BB8B12 /* ImageAnalysis.h */; };
 		079FB92A22191D9700BB8B12 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FB92922191D9700BB8B12 /* opencv2.framework */; };
+		079FB92D2219238F00BB8B12 /* MeanCalc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079FB92B2219238F00BB8B12 /* MeanCalc.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,8 +29,10 @@
 /* Begin PBXFileReference section */
 		079FB919221917D200BB8B12 /* libImageAnalysis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libImageAnalysis.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		079FB91C221917D200BB8B12 /* ImageAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageAnalysis.h; sourceTree = "<group>"; };
-		079FB91D221917D200BB8B12 /* ImageAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageAnalysis.m; sourceTree = "<group>"; };
+		079FB91D221917D200BB8B12 /* ImageAnalysis.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageAnalysis.mm; sourceTree = "<group>"; };
 		079FB92922191D9700BB8B12 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../lib/opencv2.framework; sourceTree = "<group>"; };
+		079FB92B2219238F00BB8B12 /* MeanCalc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeanCalc.cpp; sourceTree = "<group>"; };
+		079FB92C2219238F00BB8B12 /* MeanCalc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MeanCalc.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +68,9 @@
 			isa = PBXGroup;
 			children = (
 				079FB91C221917D200BB8B12 /* ImageAnalysis.h */,
-				079FB91D221917D200BB8B12 /* ImageAnalysis.m */,
+				079FB91D221917D200BB8B12 /* ImageAnalysis.mm */,
+				079FB92B2219238F00BB8B12 /* MeanCalc.cpp */,
+				079FB92C2219238F00BB8B12 /* MeanCalc.hpp */,
 			);
 			path = ImageAnalysis;
 			sourceTree = "<group>";
@@ -134,7 +139,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079FB91E221917D200BB8B12 /* ImageAnalysis.m in Sources */,
+				079FB91E221917D200BB8B12 /* ImageAnalysis.mm in Sources */,
+				079FB92D2219238F00BB8B12 /* MeanCalc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

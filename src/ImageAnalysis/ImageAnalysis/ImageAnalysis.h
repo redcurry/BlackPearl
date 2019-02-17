@@ -10,4 +10,6 @@
 
 @interface ImageAnalysis : NSObject
 
+- (double)getMean;
+
 @end
