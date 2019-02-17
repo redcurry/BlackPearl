@@ -262,6 +262,7 @@
 		079FB923221917D200BB8B12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = /Users/carlos/BlackPearl/lib;
 				OTHER_LDFLAGS = "-ObjC";
@@ -274,6 +275,7 @@
 		079FB924221917D200BB8B12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = /Users/carlos/BlackPearl/lib;
 				OTHER_LDFLAGS = "-ObjC";
