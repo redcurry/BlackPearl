@@ -1,6 +1,6 @@
-#include "HoughCircleTest.h"
+#include "ContourTest.h"
 
 int main(int argc, char** argv)
 {
-	return start(argc, argv);
+	return startContourTest(argc, argv);
 }

@@ -21,9 +21,15 @@
     <ClCompile Include="HoughCircleTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ContourTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HoughCircleTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContourTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
