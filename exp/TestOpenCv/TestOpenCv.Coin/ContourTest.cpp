@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <opencv2/opencv.hpp>
+#include <valarray>
 
 const char* adapt_thresh_window = "AdaptiveThreshold";
 const char* contours_window = "Contours";
@@ -70,8 +71,9 @@ void findContours()
 			good_contours.push_back(contour);
 	}
 
+	contours = good_contours;
 	adapThreshImage = cv::Scalar::all(0);
-	cv::drawContours(adapThreshImage, good_contours, -1, cv::Scalar::all(255));
+	cv::drawContours(adapThreshImage, contours, -1, cv::Scalar::all(255));
 }
 
 int startContourTest(int argc, char** argv)
@@ -103,28 +105,35 @@ int startContourTest(int argc, char** argv)
 
 	findContours();
 
-	std::vector<cv::Vec3f> circles;
-	cv::HoughCircles(
-		adapThreshImage,
-		circles,
-		cv::HOUGH_GRADIENT,
-		1,
-		60,   // minimum distance between circles
-		400,
-		20,
-		20,
-		50);
-
-	for (auto& circle : circles)
+	for (auto& contour : contours)
 	{
-		cv::circle(
-			adapThreshImage,
-			cv::Point(cvRound(circle[0]), cvRound(circle[1])),
-			cvRound(circle[2]),
-			cv::Scalar(128, 128, 128),
-			1,
-			cv::LINE_AA
-		);
+		cv::Point2f center;
+		float radius;
+
+		cv::minEnclosingCircle(contour, center, radius);
+
+		// percent of fit (ideally, every point in contour is equidistant from center)
+		int count = 0;
+		for (auto& p : contour)
+		{
+			double d = std::sqrt((p.x - center.x) * (p.x - center.x) + (p.y - center.y) * (p.y - center.y));
+			if (abs(d - radius) < 5)
+				count++;
+		}
+		double fit = (double)count / contour.size();
+		std::cout << "fit %: " << fit << std::endl;
+
+		if (fit > 0.5)
+		{
+			cv::circle(
+				adapThreshImage,
+				center,
+				radius,
+				cv::Scalar(128, 128, 128),
+				1,
+				cv::LINE_AA
+			);
+		}
 	}
 
 	cv::imshow(contours_window, adapThreshImage);
