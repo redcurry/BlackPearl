@@ -60,8 +60,18 @@ void findContours()
 		cv::CHAIN_APPROX_SIMPLE
 		);
 
+	std::vector<std::vector<cv::Point>> good_contours;
+
+	for (auto& contour : contours)
+	{
+		double area = cv::contourArea(contour);
+		bool goodArea = 1250 < area && area < 12500;
+		if (goodArea)
+			good_contours.push_back(contour);
+	}
+
 	adapThreshImage = cv::Scalar::all(0);
-	cv::drawContours(adapThreshImage, contours, -1, cv::Scalar::all(255));
+	cv::drawContours(adapThreshImage, good_contours, -1, cv::Scalar::all(255));
 }
 
 int startContourTest(int argc, char** argv)
@@ -93,13 +103,28 @@ int startContourTest(int argc, char** argv)
 
 	findContours();
 
-	for (auto& contour : contours)
+	std::vector<cv::Vec3f> circles;
+	cv::HoughCircles(
+		adapThreshImage,
+		circles,
+		cv::HOUGH_GRADIENT,
+		1,
+		60,   // minimum distance between circles
+		400,
+		20,
+		20,
+		50);
+
+	for (auto& circle : circles)
 	{
-		if (contour.size() > 10)
-		{
-			auto box = cv::fitEllipse(contour);
-			cv::ellipse(adapThreshImage, box.center, cv::Size(box.size.width / 2, box.size.height / 2), box.angle, 0, 360, cv::Scalar::all(128));
-		}
+		cv::circle(
+			adapThreshImage,
+			cv::Point(cvRound(circle[0]), cvRound(circle[1])),
+			cvRound(circle[2]),
+			cv::Scalar(128, 128, 128),
+			1,
+			cv::LINE_AA
+		);
 	}
 
 	cv::imshow(contours_window, adapThreshImage);
