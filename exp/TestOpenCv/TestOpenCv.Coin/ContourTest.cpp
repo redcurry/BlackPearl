@@ -3,6 +3,7 @@
 #include <opencv2/opencv.hpp>
 
 const char* adapt_thresh_window = "AdaptiveThreshold";
+const char* contours_window = "Contours";
 
 cv::Mat image2;
 int max_image_len2;
@@ -10,6 +11,7 @@ cv::Mat adapThreshImage;
 int blockSize = 15;
 int c = 11;
 int medianSize = 13;
+std::vector<std::vector<cv::Point>> contours;
 
 void adaptiveThreshold()
 {
@@ -20,7 +22,7 @@ void adaptiveThreshold()
 		adapThreshImage,
 		255,
 		cv::ADAPTIVE_THRESH_MEAN_C,
-		cv::THRESH_BINARY,
+		cv::THRESH_BINARY_INV,
 		blockSize,
 		c);
 
@@ -49,6 +51,19 @@ void onMedianChange(int pos, void* param)
 	adaptiveThreshold();
 }
 
+void findContours()
+{
+	cv::findContours(
+		adapThreshImage,
+		contours,
+		cv::RETR_EXTERNAL,
+		cv::CHAIN_APPROX_SIMPLE
+		);
+
+	adapThreshImage = cv::Scalar::all(0);
+	cv::drawContours(adapThreshImage, contours, -1, cv::Scalar::all(255));
+}
+
 int startContourTest(int argc, char** argv)
 {
 	image2 = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
@@ -75,6 +90,12 @@ int startContourTest(int argc, char** argv)
 	cv::imshow(adapt_thresh_window, adapThreshImage);
 	cv::waitKey(0);
 	cv::destroyWindow(adapt_thresh_window);
+
+	findContours();
+
+	cv::imshow(contours_window, adapThreshImage);
+	cv::waitKey(0);
+	cv::destroyWindow(contours_window);
 
 	return 0;
 }
