@@ -93,6 +93,15 @@ int startContourTest(int argc, char** argv)
 
 	findContours();
 
+	for (auto& contour : contours)
+	{
+		if (contour.size() > 10)
+		{
+			auto box = cv::fitEllipse(contour);
+			cv::ellipse(adapThreshImage, box.center, cv::Size(box.size.width / 2, box.size.height / 2), box.angle, 0, 360, cv::Scalar::all(128));
+		}
+	}
+
 	cv::imshow(contours_window, adapThreshImage);
 	cv::waitKey(0);
 	cv::destroyWindow(contours_window);
