@@ -1,10 +1,10 @@
 #include "CoinFinder.h"
 
-cv::RotatedRect CoinFinder::findCoin(const cv::Mat& image) const
+cv::RotatedRect CoinFinder::find_coin(const cv::Mat& image) const
 {
 	const auto image2 = median(image);
-	const auto image3 = adaptiveThreshold(image2);
-	const auto coins = findCoinCircles(image3);
+	const auto image3 = adaptive_threshold(image2);
+	const auto coins = find_coin_circles(image3);
 
 	if (coins.size() == 1)
 		return { coins[0].center, coins[0].size, coins[0].angle };
@@ -27,7 +27,7 @@ int CoinFinder::calc_median_size(const cv::Mat& image) const
 	return round_odd(longest_len(image) / 50.0);
 }
 
-cv::Mat CoinFinder::adaptiveThreshold(const cv::Mat& image) const
+cv::Mat CoinFinder::adaptive_threshold(const cv::Mat& image) const
 {
 	cv::Mat new_image;
 	cv::adaptiveThreshold(
@@ -41,7 +41,7 @@ cv::Mat CoinFinder::adaptiveThreshold(const cv::Mat& image) const
 	return new_image;
 }
 
-std::vector<cv::RotatedRect> CoinFinder::findCoinCircles(const cv::Mat& image) const
+std::vector<cv::RotatedRect> CoinFinder::find_coin_circles(const cv::Mat& image) const
 {
 	std::vector<std::vector<cv::Point>> contours;
 	cv::findContours(

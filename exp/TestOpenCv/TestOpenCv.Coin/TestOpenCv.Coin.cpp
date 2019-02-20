@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 	cv::cvtColor(small_image, gray, cv::COLOR_BGR2GRAY);
 
 	CoinFinder coinFinder;
-	auto coin = coinFinder.findCoin(gray);
+	auto coin = coinFinder.find_coin(gray);
 
 	cv::circle(small_image, coin.center, coin.size.height, cv::Scalar(0, 0, 255), 2);
 
