@@ -1,6 +1,7 @@
-#include "CoinFinderTest.h"
+#include "CannyTest.h"
+using namespace CannyTest;
 
 int main(int argc, char** argv)
 {
-	return startCoinFinderTest(argc, argv);
+	return start_canny_test(argc, argv);
 }
