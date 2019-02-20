@@ -158,12 +158,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CoinFinder.cpp" />
+    <ClCompile Include="CoinFinderTest.cpp" />
     <ClCompile Include="ContourTest.cpp" />
     <ClCompile Include="HoughCircleTest.cpp" />
     <ClCompile Include="TestOpenCv.Coin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoinFinder.h" />
+    <ClInclude Include="CoinFinderTest.h" />
     <ClInclude Include="ContourTest.h" />
     <ClInclude Include="HoughCircleTest.h" />
   </ItemGroup>
