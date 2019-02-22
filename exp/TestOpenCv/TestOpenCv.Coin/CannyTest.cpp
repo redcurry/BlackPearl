@@ -9,8 +9,11 @@ namespace CannyTest
 	void on_canny1_change(int pos, void* param);
 	void on_canny2_change(int pos, void* param);
 
+	void find_contours();
+
 	const char* median_window = "Median";
 	const char* canny_window = "Canny";
+	const char* contour_window = "Contours";
 
 	cv::Mat image;
 	int max_image_len;
@@ -21,6 +24,8 @@ namespace CannyTest
 	cv::Mat canny_image;
 	int thresh1 = 500;
 	int thresh2 = 250;
+
+	std::vector<std::vector<cv::Point>> contours;
 
 	int start_canny_test(int argc, char** argv)
 	{
@@ -52,6 +57,14 @@ namespace CannyTest
 		cv::waitKey(0);
 		cv::destroyWindow(canny_window);
 
+		cv::namedWindow(contour_window, cv::WINDOW_AUTOSIZE);
+
+		find_contours();
+
+		cv::imshow(contour_window, canny_image);
+		cv::waitKey(0);
+		cv::destroyWindow(contour_window);
+
 		return 0;
 	}
 
@@ -71,7 +84,7 @@ namespace CannyTest
 
 	void canny()
 	{
-		cv::Canny(image, canny_image, thresh1, thresh2);
+		cv::Canny(median_image, canny_image, thresh1, thresh2);
 	}
 
 	void on_canny1_change(int pos, void* param)
@@ -86,5 +99,13 @@ namespace CannyTest
 		thresh2 = pos;
 		canny();
 		cv::imshow(canny_window, canny_image);
+	}
+
+	void find_contours()
+	{
+		cv::findContours(canny_image, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+		cv::drawContours(canny_image, contours, -1, cv::Scalar(128, 128, 128), 2);
+
+		std::cout << "contours: " << contours.size() << std::endl;
 	}
 }
