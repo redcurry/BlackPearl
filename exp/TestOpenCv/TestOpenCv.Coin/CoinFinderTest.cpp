@@ -17,7 +17,7 @@ int startCoinFinderTest(int argc, char** argv)
 	CoinFinder coinFinder;
 	auto coin = coinFinder.find_coin(gray);
 
-	cv::circle(small_image, coin.center, coin.size.height, cv::Scalar(0, 0, 255), 2);
+	cv::circle(small_image, coin.center, int(coin.size.height), cv::Scalar(0, 0, 255), 2);
 
 	cv::namedWindow("Window");
 	cv::imshow("Window", small_image);
