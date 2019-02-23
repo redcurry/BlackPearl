@@ -3,7 +3,7 @@
 cv::RotatedRect CoinFinder::find_coin(const cv::Mat& image) const
 {
 	const auto image2 = median(image);
-	const auto image3 = adaptive_threshold(image2);
+	const auto image3 = canny(image2);
 	const auto coins = find_coin_circles(image3);
 
 	if (coins.size() == 1)
@@ -27,18 +27,11 @@ int CoinFinder::calc_median_size(const cv::Mat& image) const
 	return round_odd(longest_len(image) / 50.0);
 }
 
-cv::Mat CoinFinder::adaptive_threshold(const cv::Mat& image) const
+cv::Mat CoinFinder::canny(const cv::Mat& image) const
 {
-	cv::Mat new_image;
-	cv::adaptiveThreshold(
-		image,
-		new_image,
-		255,
-		cv::ADAPTIVE_THRESH_MEAN_C,
-		cv::THRESH_BINARY_INV,
-		calc_adapt_thresh_size(image),
-		11);
-	return new_image;
+	cv::Mat canny_image;
+	cv::Canny(image, canny_image, CannyThreshold1, CannyThreshold2);
+	return canny_image;
 }
 
 std::vector<cv::RotatedRect> CoinFinder::find_coin_circles(const cv::Mat& image) const
@@ -73,11 +66,6 @@ std::vector<cv::RotatedRect> CoinFinder::find_coin_circles(const cv::Mat& image)
 	}
 
 	return coin_circles;
-}
-
-int CoinFinder::calc_adapt_thresh_size(const cv::Mat& image) const
-{
-	return round_odd(longest_len(image) / 42.0);
 }
 
 bool CoinFinder::within_coin_area_range(double a, const cv::Mat& image) const
