@@ -3,6 +3,8 @@
 
 namespace FloodFillTest
 {
+	typedef std::vector<cv::Point> Contour;
+
 	cv::Mat image;
 	cv::Mat median_image;
 	cv::Mat smooth_image;
@@ -43,6 +45,10 @@ namespace FloodFillTest
 
 		invert();
 		threshold();
+
+		std::vector<Contour> contours;
+		cv::findContours(image, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+		cv::drawContours(image, contours, -1, cv::Scalar(128, 128, 128), 2);
 
 		cv::namedWindow(image_window, cv::WINDOW_AUTOSIZE);
 		cv::imshow(image_window, image);
