@@ -9,8 +9,8 @@ namespace ImageAnalysis.Bindings
     [BaseType(typeof(NSObject))]
     interface ImageAnalysis
     {
-        [Export("drawOn:")]
-        UIImage DrawOn(UIImage image);
+        [Export("findCoin:")]
+        NSArray<NSNumber> FindCoin(UIImage image);
     }
 }
 
