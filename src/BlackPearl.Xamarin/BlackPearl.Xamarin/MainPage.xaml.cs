@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using SkiaSharp;
+using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
 namespace BlackPearl.Xamarin
@@ -15,31 +11,53 @@ namespace BlackPearl.Xamarin
         {
             InitializeComponent();
 
-            var analysis = DependencyService.Get<IImageAnalysis>();
-            var imageBytes = GetFirstResourceAsBytes();
+            ViewModel = new MainViewModel();
+            BindingContext = ViewModel;
+        }
 
-            Content = new Image
+        public MainViewModel ViewModel { get; }
+
+        private void MainPage_OnAppearing(object sender, EventArgs e)
+        {
+            ViewModel.Init();
+            Canvas.InvalidateSurface();
+        }
+
+        private void Image_OnSizeChanged(object sender, EventArgs e)
+        {
+            Canvas.InvalidateSurface();
+        }
+
+        private void Canvas_OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        {
+            var imageControl = ApertureImage;
+            var scale = e.Info.Width / 480;
+            var coin = ViewModel.Coin;
+            if (coin == null) return;
+
+            var canvas = e.Surface.Canvas;
+            canvas.Clear();
+
+            var fillPaint = new SKPaint
             {
-                Source = ImageSource.FromStream(() => analysis.DrawOn(imageBytes))
+                Style = SKPaintStyle.Fill,
+                Color = new SKColor(255, 0, 0, 128),
+                StrokeWidth = 2.0f,
             };
-        }
 
-        public byte[] GetFirstResourceAsBytes()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceNames = assembly.GetManifestResourceNames();
-            using (var resourceStream = assembly.GetManifestResourceStream(resourceNames[0]))
+            var strokePaint = new SKPaint
             {
-                return ToBytes(resourceStream);
-            }
-        }
+                Style = SKPaintStyle.Stroke,
+                Color = Color.Red.ToSKColor(),
+                StrokeWidth = 2.0f,
+            };
 
-        public byte[] ToBytes(Stream stream)
-        {
-            var length = stream.Length;
-            var bytes = new byte[length];
-            stream.Read(bytes, 0, (int)length);
-            return bytes;
+            var x = (float)(coin.X * scale);
+            var y = (float)(coin.Y * scale);
+            var r = (float)(coin.Radius * scale);
+
+            canvas.DrawCircle(x, y, r, fillPaint);
+            canvas.DrawCircle(x, y, r, strokePaint);
         }
     }
 }
