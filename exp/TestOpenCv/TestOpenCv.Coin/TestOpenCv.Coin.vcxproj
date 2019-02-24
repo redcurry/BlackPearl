@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ApertureFinder.cpp" />
     <ClCompile Include="CannyTest.cpp" />
     <ClCompile Include="CoinFinder.cpp" />
     <ClCompile Include="CoinFinderTest.cpp" />
@@ -166,9 +167,11 @@
     <ClCompile Include="TestOpenCv.Coin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ApertureFinder.h" />
     <ClInclude Include="CannyTest.h" />
     <ClInclude Include="CoinFinder.h" />
     <ClInclude Include="CoinFinderTest.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="ContourTest.h" />
     <ClInclude Include="FloodFillTest.h" />
     <ClInclude Include="HoughCircleTest.h" />
