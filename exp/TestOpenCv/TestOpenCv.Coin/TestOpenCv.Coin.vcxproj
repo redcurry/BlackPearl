@@ -161,6 +161,7 @@
     <ClCompile Include="CoinFinder.cpp" />
     <ClCompile Include="CoinFinderTest.cpp" />
     <ClCompile Include="ContourTest.cpp" />
+    <ClCompile Include="FloodFillTest.cpp" />
     <ClCompile Include="HoughCircleTest.cpp" />
     <ClCompile Include="TestOpenCv.Coin.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="CoinFinder.h" />
     <ClInclude Include="CoinFinderTest.h" />
     <ClInclude Include="ContourTest.h" />
+    <ClInclude Include="FloodFillTest.h" />
     <ClInclude Include="HoughCircleTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

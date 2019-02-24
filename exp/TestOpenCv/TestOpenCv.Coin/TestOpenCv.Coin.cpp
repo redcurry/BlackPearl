@@ -1,6 +1,7 @@
-#include "CoinFinderTest.h"
+#include "FloodFillTest.h"
+using namespace FloodFillTest;
 
 int main(int argc, char** argv)
 {
-	return startCoinFinderTest(argc, argv);
+	return start(argc, argv);
 }
