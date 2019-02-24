@@ -14,7 +14,7 @@ cv::RotatedRect CoinFinder::find_coin(const cv::Mat& image) const
 	if (coins.size() > 1)
 		throw std::exception("More than one coin was found.");
 
-	throw std::exception("No coins were found.");
+	throw std::exception("No coins was found.");
 }
 
 cv::Mat CoinFinder::median(const cv::Mat& image) const
