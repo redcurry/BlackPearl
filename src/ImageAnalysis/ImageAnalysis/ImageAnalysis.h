@@ -11,6 +11,6 @@
 
 @interface ImageAnalysis : NSObject
 
-- (UIImage *)drawOn:(UIImage *)image;
+- (NSArray *)findCoin:(UIImage *)image;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #ifdef __cplusplus
-#include "ImageDrawer.hpp"
+#include "CoinFinder.h"
 #endif
 
 #import "ImageAnalysis.h"
@@ -15,12 +15,16 @@
 
 @implementation ImageAnalysis
 
-- (UIImage *)drawOn:(UIImage *)image
+- (NSArray *)findCoin:(UIImage *)image
 {
     cv::Mat mat = [image CVMat];
-    ImageDrawer drawer;
-    drawer.DrawOn(mat);
-    return [UIImage imageWithCVMat:mat];
+    CoinFinder coinFinder;
+    cv::RotatedRect coin = coinFinder.find_coin(mat);
+    return @[ [NSNumber numberWithDouble:(coin.center.x)],
+              [NSNumber numberWithDouble:(coin.center.y)],
+              [NSNumber numberWithDouble:(coin.size.width)],
+              [NSNumber numberWithDouble:(coin.size.height)],
+              [NSNumber numberWithDouble:(coin.angle)] ];
 }
 
 @end

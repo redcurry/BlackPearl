@@ -12,6 +12,7 @@
 		079FB92A22191D9700BB8B12 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FB92922191D9700BB8B12 /* opencv2.framework */; };
 		079FB92D2219238F00BB8B12 /* ImageAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079FB92B2219238F00BB8B12 /* ImageAnalysis.cpp */; };
 		079FB92F221940F800BB8B12 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 079FB92E221940F800BB8B12 /* UIImage+OpenCV.mm */; };
+		079FB93722230D2300BB8B12 /* CoinFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079FB93522230D2300BB8B12 /* CoinFinder.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,9 @@
 		079FB92C2219238F00BB8B12 /* ImageDrawer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageDrawer.hpp; sourceTree = "<group>"; };
 		079FB92E221940F800BB8B12 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
 		079FB9312219416F00BB8B12 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		079FB93522230D2300BB8B12 /* CoinFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoinFinder.cpp; sourceTree = "<group>"; };
+		079FB93622230D2300BB8B12 /* CoinFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinFinder.h; sourceTree = "<group>"; };
+		079FB93822230D4C00BB8B12 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,9 @@
 		079FB91B221917D200BB8B12 /* ImageAnalysis */ = {
 			isa = PBXGroup;
 			children = (
+				079FB93822230D4C00BB8B12 /* Common.h */,
+				079FB93522230D2300BB8B12 /* CoinFinder.cpp */,
+				079FB93622230D2300BB8B12 /* CoinFinder.h */,
 				079FB91C221917D200BB8B12 /* ImageAnalysis.h */,
 				079FB91D221917D200BB8B12 /* ImageAnalysis.mm */,
 				079FB92B2219238F00BB8B12 /* ImageAnalysis.cpp */,
@@ -144,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079FB93722230D2300BB8B12 /* CoinFinder.cpp in Sources */,
 				079FB91E221917D200BB8B12 /* ImageAnalysis.mm in Sources */,
 				079FB92F221940F800BB8B12 /* UIImage+OpenCV.mm in Sources */,
 				079FB92D2219238F00BB8B12 /* ImageAnalysis.cpp in Sources */,
