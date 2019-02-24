@@ -10,9 +10,10 @@ namespace FloodFillTest
 
 	cv::String smooth_window = "SmoothWindow";
 	cv::String flood_window = "FloodWindow";
+	cv::String image_window = "ImageWindow";
 
-	int d = 13;
-	int sigma_color = 32;
+	int d = 21;
+	int sigma_color = 17;
 	int sigma_space = 13;
 
 	void show_bilateral_filter();
@@ -21,13 +22,14 @@ namespace FloodFillTest
 	void on_sigma_color_change(int pos, void* param);
 	void on_sigma_space_change(int pos, void* param);
 
-	int low_diff = 2;
-	int up_diff = 2;
+	int up_low_diff = 2;
 
 	void show_flood_fill();
 	void flood_fill();
-	void on_low_diff_change(int pos, void* param);
-	void on_up_diff_change(int pos, void* param);
+	void on_up_low_diff_change(int pos, void* param);
+
+	void invert();
+	void threshold();
 
 	int start(int argc, char** argv)
 	{
@@ -36,6 +38,16 @@ namespace FloodFillTest
 
 		show_bilateral_filter();
 		show_flood_fill();
+
+		image = flood_image;
+
+		invert();
+		threshold();
+
+		cv::namedWindow(image_window, cv::WINDOW_AUTOSIZE);
+		cv::imshow(image_window, image);
+		cv::waitKey(0);
+		cv::destroyWindow(image_window);
 
 		return 0;
 	}
@@ -83,12 +95,11 @@ namespace FloodFillTest
 	void show_flood_fill()
 	{
 		cv::namedWindow(flood_window, cv::WINDOW_AUTOSIZE);
-		cv::createTrackbar("lowDiff", flood_window, &low_diff, 50, on_low_diff_change);
-		cv::createTrackbar("upDiff", flood_window, &up_diff, 50, on_up_diff_change);
+		cv::createTrackbar("upLowDiff", flood_window, &up_low_diff, 50, on_up_low_diff_change);
 
 		flood_fill();
 
-		cv::imshow(flood_window, smooth_image);
+		cv::imshow(flood_window, flood_image);
 		cv::waitKey(0);
 		cv::destroyWindow(flood_window);
 	}
@@ -99,20 +110,23 @@ namespace FloodFillTest
 		cv::Rect* bounds = new cv::Rect();
 		flood_image = smooth_image.clone();
 		cv::floodFill(flood_image, center, cv::Scalar::all(0), bounds,
-			cv::Scalar::all(low_diff), cv::Scalar::all(up_diff), 8);
+			cv::Scalar::all(up_low_diff), cv::Scalar::all(up_low_diff), 8);
 	}
 
-	void on_low_diff_change(int pos, void* param)
+	void on_up_low_diff_change(int pos, void* param)
 	{
-		low_diff = pos;
+		up_low_diff = pos;
 		flood_fill();
 		cv::imshow(flood_window, flood_image);
 	}
 
-	void on_up_diff_change(int pos, void* param)
+	void invert()
 	{
-		up_diff = pos;
-		flood_fill();
-		cv::imshow(flood_window, flood_image);
+		cv::bitwise_not(image, image);
+	}
+
+	void threshold()
+	{
+		cv::threshold(image, image, 254, 255, cv::ThresholdTypes::THRESH_BINARY);
 	}
 }
