@@ -1,4 +1,5 @@
 #include "CoinFinder.h"
+#include "Common.h"
 
 cv::RotatedRect CoinFinder::find_coin(const cv::Mat& image) const
 {
@@ -104,19 +105,4 @@ int CoinFinder::round_odd(double x) const
 {
 	const auto floor = int(std::floor(x));
 	return floor % 2 == 0 ? floor + 1 : floor;
-}
-
-double CoinFinder::longest_len(const cv::Mat& image) const
-{
-	return max(image.cols, image.rows);
-}
-
-double CoinFinder::max(double a, double b) const
-{
-	return a > b ? a : b;
-}
-
-double CoinFinder::distance(const cv::Point& p1, const cv::Point& p2) const
-{
-	return std::sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 }

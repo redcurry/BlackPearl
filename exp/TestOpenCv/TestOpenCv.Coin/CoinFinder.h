@@ -1,8 +1,7 @@
 #pragma once
 
 #include <opencv2/opencv.hpp>
-
-typedef std::vector<cv::Point> Contour;
+#include "Common.h"
 
 class CoinFinder
 {
@@ -29,10 +28,7 @@ private:
 	std::vector<cv::RotatedRect> find_coins(const cv::Mat& image, const std::vector<cv::RotatedRect>& circles) const;
 	std::vector<cv::RotatedRect> filter_by_radius(std::vector<cv::RotatedRect> circles, double min, double max) const;
 	double calc_circle_fit_ratio(const Contour& contour, const cv::Point2f& center, double r) const;
-	double longest_len(const cv::Mat& image) const;
 	int calc_median_k(const cv::Mat& image) const;
 	int round_odd(double x) const;
-	double distance(const cv::Point& p1, const cv::Point& p2) const;
-	double max(double a, double b) const;
 };
 
