@@ -49,14 +49,14 @@ namespace BlackPearl.Xamarin
             var fillPaint = new SKPaint
             {
                 Style = SKPaintStyle.Fill,
-                Color = new SKColor(255, 0, 0, 128),
+                Color = new SKColor(0, 192, 0, 64),
                 StrokeWidth = 2.0f,
             };
 
             var strokePaint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
-                Color = Color.Red.ToSKColor(),
+                Color = fillPaint.Color.WithAlpha(255),
                 StrokeWidth = 2.0f,
             };
 

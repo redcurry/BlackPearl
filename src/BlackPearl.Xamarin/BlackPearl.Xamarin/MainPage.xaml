@@ -20,7 +20,6 @@
             <Image
                 x:Name="ApertureImage"
                 Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
-                BackgroundColor="Blue"
                 />
             <sk:SKCanvasView
                 x:Name="Canvas"
