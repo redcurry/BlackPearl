@@ -1,49 +1,37 @@
-﻿using System.IO;
-using System.Reflection;
-using Xamarin.Forms;
+﻿using GalaSoft.MvvmLight;
 
 namespace BlackPearl.Xamarin
 {
-    public class MainViewModel
+    public class MainViewModel : ViewModelBase
     {
-        public MainViewModel()
+        private readonly BlackPearlApp _app;
+
+        public MainViewModel(BlackPearlApp app)
         {
-            Image = ImageSource.FromStream(GetFirstResourceAsStream);
+            _app = app;
         }
 
-        public ImageSource Image { get; set; }
-        public Coin Coin { get; set; }
-
-        public void Init()
+        private Image _image;
+        public Image Image
         {
-            var analysis = DependencyService.Get<IImageAnalysis>();
-            var imageBytes = GetFirstResourceAsBytes();
-            Coin = analysis.FindCoin(imageBytes);
+            get => _image;
+            set => Set(ref _image, value);
         }
 
-        public Stream GetFirstResourceAsStream()
+        private Coin _coin;
+        public Coin Coin
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceNames = assembly.GetManifestResourceNames();
-            return assembly.GetManifestResourceStream(resourceNames[0]);
+            get => _coin;
+            set => Set(ref _coin, value);
         }
 
-        public byte[] GetFirstResourceAsBytes()
+        public void LoadImage(Image image)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceNames = assembly.GetManifestResourceNames();
-            using (var resourceStream = assembly.GetManifestResourceStream(resourceNames[0]))
-            {
-                return ToBytes(resourceStream);
-            }
-        }
+            _app.LoadImage(image);
+            _app.Analyze();
 
-        public byte[] ToBytes(Stream stream)
-        {
-            var length = stream.Length;
-            var bytes = new byte[length];
-            stream.Read(bytes, 0, (int)length);
-            return bytes;
+            Image = image;
+            Coin = _app.GetCoin();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -11,7 +10,13 @@ namespace BlackPearl.Xamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var imageAnalysis = DependencyService.Get<IImageAnalysis>();
+            var app = new BlackPearlApp(imageAnalysis);
+            var mainVm = new MainViewModel(app);
+            var mainPage = new MainPage();
+            mainPage.ViewModel = mainVm;
+
+            MainPage = mainPage;
         }
 
         protected override void OnStart()

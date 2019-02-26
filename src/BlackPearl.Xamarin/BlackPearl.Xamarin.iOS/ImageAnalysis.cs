@@ -14,8 +14,8 @@ namespace BlackPearl.Xamarin.iOS
             var coinAsArray = ia.FindCoin(image);
             return new Coin
             {
-                X = coinAsArray[0].DoubleValue,
-                Y = coinAsArray[1].DoubleValue,
+                CenterX = coinAsArray[0].DoubleValue,
+                CenterY = coinAsArray[1].DoubleValue,
                 Radius = coinAsArray[2].DoubleValue
             };
         }

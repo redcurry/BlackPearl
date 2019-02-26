@@ -2,17 +2,20 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BlackPearl.Xamarin"
+    xmlns:l="clr-namespace:BlackPearl.Xamarin"
     xmlns:sk="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     x:Class="BlackPearl.Xamarin.MainPage"
     Appearing="MainPage_OnAppearing"
     >
 
+    <ContentPage.Resources>
+        <l:ImageToImageSourceConverter x:Key="ImageSourceConverter" />
+    </ContentPage.Resources>
+
     <Grid>
         <Image
             x:Name="ApertureImage"
-            Source="{Binding Image}"
-            SizeChanged="Image_OnSizeChanged"
+            Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
             VerticalOptions="StartAndExpand"
             HorizontalOptions="StartAndExpand"
             BackgroundColor="Blue"
