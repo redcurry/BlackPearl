@@ -13,17 +13,20 @@
     </ContentPage.Resources>
 
     <Grid>
-        <Image
-            x:Name="ApertureImage"
-            Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
-            VerticalOptions="StartAndExpand"
-            HorizontalOptions="StartAndExpand"
-            BackgroundColor="Blue"
-            />
-        <sk:SKCanvasView
-            x:Name="Canvas"
-            PaintSurface="Canvas_OnPaintSurface"
-            />
+        <Grid
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            >
+            <Image
+                x:Name="ApertureImage"
+                Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
+                BackgroundColor="Blue"
+                />
+            <sk:SKCanvasView
+                x:Name="Canvas"
+                PaintSurface="Canvas_OnPaintSurface"
+                />
+        </Grid>
     </Grid>
 
 </ContentPage>
